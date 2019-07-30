@@ -23,7 +23,6 @@ exports.verifyTransfer = (trBuf, cb) => {
         var signature = transferArr[1]
         var content = transferArr[2]
 
-
         // compare content hash
         var computedHash = binrefContentHash(content).data
 
@@ -119,7 +118,6 @@ exports.makeEvent = ({ keyPair, sequence, prev, content }, cb) => {
         let newMsg = makeEvent(keyPair, sequence, prev, content)
         cb(null, newMsg)
     } catch (error) {
-        console.warn(err)
         cb(error)
     }
 }
@@ -162,7 +160,6 @@ exports.newDecoder = newDecoder
 function decodeEvent(evtBuf, cb) {
     var dec = newDecoder()
     dec.on('data', (evtArr) => {
-        console.dir(evtArr)
         if (!Array.isArray(evtArr)) return cb(new Array('expected event to be encoded as an array'))
         if (evtArr.length !== 5) return cb(new Array('expected 5 elements in the array'))
 
