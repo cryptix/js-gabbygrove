@@ -1,0 +1,23 @@
+{
+  "name": "gabbygrove",
+  "version": "1.0.0",
+  "description": "an append-only fork-free signature chain format based on CBOR",
+  "main": "index.js",
+  "dependencies": {
+    "cbor": "^4.1.5",
+    "sodium-native": "^2.4.2"
+  },
+  "scripts": {
+    "test": "set -e;node tests/hardcoded.js;node tests/makeEvent.js"
+  },
+  "keywords": [
+    "ssb",
+    "cbor"
+  ],
+  "author": "cryptix@riseup.net",
+  "license": "ISC",
+  "devDependencies": {
+    "ssb-keys": "^7.2.0",
+    "tape": "^4.11.0"
+  }
+}
