@@ -74,7 +74,7 @@ function makeEvent(keyPair, sequence, prev, content) {
         previous,
         new BinaryRef(1, Buffer.from(keyPair.public.replace(/\.ed25519$/, ''), 'base64')),
         sequence,
-        Date.now(),
+        Math.floor(Date.now()/1000),
         [
             1, // JSON enum value
             jsonBufContent.length,
