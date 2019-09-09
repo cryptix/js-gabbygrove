@@ -76,9 +76,9 @@ function makeEvent(keyPair, sequence, prev, content) {
         sequence,
         Math.floor(Date.now()/1000),
         [
-            1, // JSON enum value
-            jsonBufContent.length,
             binrefContentHash(jsonBufContent),
+            jsonBufContent.length,
+            1, // JSON enum value
         ],
     ]
     
@@ -169,9 +169,9 @@ function decodeEvent(evtBuf, cb) {
             sequence: evtArr[2],
             timestamp: evtArr[3],
             content: {
-                encoding: evtArr[4][0],
+                hash: evtArr[4][0],
                 size: evtArr[4][1],
-                hash: evtArr[4][2],
+                encoding: evtArr[4][2],
             }
         }
         cb(null, evt)

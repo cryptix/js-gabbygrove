@@ -26,7 +26,7 @@ function bufferToStream(binary) {
 tape("hardcoded event decode", (t) => {
 
     // example from encoder go test:
-    var input = Buffer.from("85d9041a5821026265656662656566626565666265656662656566626565666265656662656566d9041a582101aed3dab65ce9e0d6c50d46fceffb552296ed21b6e0b537a6a0184575ce8f5cbd031a5d3f888283011869d9041a58210327d0b22f26328f03ffce2a7c66b2ee27e337ca5d28cdc89ead668f1dd7f0218b", "hex")
+    var input = Buffer.from("85d9041a5821021aaef1f6980c8d9f3f1ebc84dce391212c2f01cd8861943127cd58ec04bc1bb7d9041a582101aed3dab65ce9e0d6c50d46fceffb552296ed21b6e0b537a6a0184575ce8f5cbd032283d9041a58210327d0b22f26328f03ffce2a7c66b2ee27e337ca5d28cdc89ead668f1dd7f0218b186901", "hex")
     
     var dec = gabby.newDecoder()
 
@@ -40,15 +40,15 @@ tape("hardcoded event decode", (t) => {
         var sequence = obj[2]
         var timestamp = obj[3]
         var content = {
-            encoding:obj[4][0],
+            hash: obj[4][0],
             size: obj[4][1],
-            hash: obj[4][2],
+            encoding:obj[4][2],
         }
     
-        t.equal(previous.ref(), '%YmVlZmJlZWZiZWVmYmVlZmJlZWZiZWVmYmVlZmJlZWY=.ggmsg-v1', "has previous")
+        t.equal(previous.ref(), '%Gq7x9pgMjZ8/HryE3OORISwvAc2IYZQxJ81Y7AS8G7c=.ggmsg-v1', "has previous")
         t.equal(sequence, 3, 'sequence')
         t.equal(author.ref(), "@rtPatlzp4NbFDUb87/tVIpbtIbbgtTemoBhFdc6PXL0=.ggfeed-v1", 'author')
-        t.equal(timestamp, 1564444802, 'timestamp')
+        t.equal(timestamp, -3, 'timestamp')
 
         t.equal(content.hash.ref(), '!J9CyLyYyjwP/zip8ZrLuJ+M3yl0ozcierWaPHdfwIYs=.gabby-v1-content', 'content hash')
         t.equal(content.size, 105, 'size')
